@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h2>User Registration</h2><br>
+      <form (ngSubmit)="onSubmit(f.value,f)" #f="ngForm" >
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" class="form-control" ngModel name="first_name" required >
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" class="form-control" ngModel name="last_name" >
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="form-control" ngModel name="Email" required email #email="ngModel">
+          </div>
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid Email address !</span>
+          <div class="form-group">
+            <label for="phone">Mobile Number</label>
+            <input type="text" id="phone" class="form-control"  ngModel #phno name="phone" required>
+          </div>
+        <span class="help-block" *ngIf="phoneNumHelpBlock">Please enter a Valid Phone Number!</span>
+        <div class="form-group">
+          <label for="date_of_birth">Date Of Birth</label>
+          <input type="date" id="date_of_birth" class="form-control"  ngModel  name="date_of_birth" required>
+        </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" ngModel name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control"  name="confirmPassword" required>
+          </div>
+        <span class="help-block" *ngIf="confirmPasswordHelpBlock">Password Didn't Match with confirm password !</span>
+        <div class="form-group">
+            <label>Gender</label>
+          </div>
+        <div class="form-group">
+        <select  class=" form-control"  ngModel id="gender" name="gender" required>
+          <option *ngFor="let gender of genders" >{{gender}}</option>
+        </select>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" >Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
