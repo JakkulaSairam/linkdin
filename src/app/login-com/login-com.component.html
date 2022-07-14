@@ -1,1 +1,25 @@
-<p>login-com works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h2>User Login</h2><br>
+      <form (ngSubmit)="onSubmit(f.value)" #f="ngForm" >
+
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" ngModel name="email" required email #email="ngModel">
+        </div>
+        <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid Email address !</span>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" ngModel name="password" required>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" >Submit</button>
+        <div class="form-group"><br>
+        <a routerLink="/register" class="link-primary">Not a User ? Register</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

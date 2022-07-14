@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       this.registerService.registerUser(users);
     console.log(users);
     f.reset();
-    this.confirmPassword="";
+    (<HTMLInputElement>document.getElementById("confirmPassword")).value="";
 
 
     }
