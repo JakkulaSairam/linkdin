@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <h2>User Login</h2><br>
@@ -15,6 +15,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" class="form-control" ngModel name="password" required>
         </div>
+        <p *ngIf="invalidCred" class="help-block">Invalid Credentials</p>
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid" >Submit</button>
         <div class="form-group"><br>
         <a routerLink="/register" class="link-primary">Not a User ? Register</a>
@@ -23,3 +24,4 @@
     </div>
   </div>
 </div>
+

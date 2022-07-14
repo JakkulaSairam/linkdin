@@ -10,12 +10,12 @@ export class UsersService{
   constructor(private http:HttpClient) {
   }
   registerUser( users:User){
-    this.http.post('https://fir-backend-2538b-default-rtdb.firebaseio.com/user.json',users).subscribe(responseData=> {
+    this.http.post('http://localhost:8080/user/signup',users).subscribe(responseData=> {
       console.log(responseData);
     });
   }
   checkLoginUser(email:string,password:string){
     const user:LoginUser={email,password};
-    return this.http.post('',user,{observe:'response'});
+    return this.http.post('http://localhost:8080/user/login',user,{observe:'response'})
   }
 }

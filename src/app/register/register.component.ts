@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
       this.phoneNumHelpBlock=false;
       this.confirmPasswordHelpBlock=false;
       this.registerService.registerUser(users);
-    console.log(users);
     f.reset();
     (<HTMLInputElement>document.getElementById("confirmPassword")).value="";
 
