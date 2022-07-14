@@ -16,10 +16,6 @@ export class UsersService{
   }
   checkLoginUser(email:string,password:string){
     const user:LoginUser={email,password};
-    this.http.post('',user).pipe(map(responseData=> {
-      console.log(responseData);
-    }))
-
-
+    return this.http.post('',user,{observe:'response'});
   }
 }

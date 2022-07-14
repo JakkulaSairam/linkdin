@@ -10,14 +10,17 @@ import {LoginUser} from "../models/loginuser.model";
   styleUrls: ['./login-com.component.css']
 })
 export class LoginComComponent implements OnInit {
-
-  constructor(private loginserveice:UsersService) { }
+   state:string ="";
+  constructor(private loginService:UsersService) { }
 
   ngOnInit(): void {
   }
   onSubmit(user:LoginUser){
-    this.loginserveice.checkLoginUser(user.email,user.password);
-
+    this.loginService.checkLoginUser(user.email,user.password).subscribe((response :any) =>
+    {
+      this.state=response.body.data.email.toString();
+    });
+    console.log(this.state);
 
   }
 
