@@ -1,8 +1,9 @@
 export interface Experience{
   title:string;
-  company_name:string;
+  companyName:string;
   location:string;
-  start_date:string;
-  end_date:string;
-
+  startDate:string;
+  endDate:string;
+  employmentTypeId:number;
+  userId:number;
 }

@@ -33,11 +33,12 @@
                   <h3>Address</h3><button class="btn btn-primary " (click)="showAddress()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
                 </h4>
               </div>
-    <div class="panel-body"><h4>House Number:</h4></div>
-    <div class="panel-body"><h4>City :</h4></div>
-    <div class="panel-body"><h4>State :</h4></div>
-    <div class="panel-body"><h4>Country :</h4></div>
-    <div class="panel-body"><h4>Postal Code :</h4></div>
+    <div class="row" *ngIf="address">
+    <div class="panel-body"><h4>House Number: {{ address.house_number}} </h4></div>
+    <div class="panel-body"><h4>City :{{address.city}}</h4></div>
+    <div class="panel-body"><h4>State :{{ address.state}}</h4></div>
+    <div class="panel-body"><h4>Country : {{address.country}}</h4></div>
+      <div class="panel-body"><h4>Postal Code :{{address.postalcode}}</h4></div></div>
 
   </div>
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showadd">
@@ -74,12 +75,13 @@
       <h4 class="panel-title">
         <h3>Education</h3><button class="btn btn-primary " (click)="showEducation()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
       </h4></div>
-    <div class="panel-body"><h4>School :</h4></div>
-    <div class="panel-body"><h4>Degree :</h4></div>
-    <div class="panel-body"><h4>Field Of Study :</h4></div>
-    <div class="panel-body"><h4>Start Date :</h4></div>
-    <div class="panel-body"><h4>End Date :</h4></div>
-    <div class="panel-body"><h4>Grade :</h4></div>
+    <div *ngFor="let edu of education">
+    <div class="panel-body"><h4>School :{{edu.school}}</h4></div>
+    <div class="panel-body"><h4>Degree :{{edu.degree}}</h4></div>
+    <div class="panel-body"><h4>Field Of Study :{{edu.fieldOfStudy}}</h4></div>
+    <div class="panel-body"><h4>Start Date :{{edu.startDate}}</h4></div>
+    <div class="panel-body"><h4>End Date :{{edu.endDate}}</h4></div>
+    <div class="panel-body"><h4>Grade :{{edu.grade}}</h4></div><hr></div>
 
   </div>
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showedu" >
@@ -93,16 +95,16 @@
         <input type="text" id="degree" class="form-control" ngModel name="degree" >
       </div>
       <div class="form-group">
-        <label for="field_of_study">Field of Study : </label>
-        <input type="text" id="field_of_study" class="form-control" ngModel name="field_of_study" >
+        <label for="fieldOfStudy">Field of Study : </label>
+        <input type="text" id="fieldOfStudy" class="form-control" ngModel name="fieldOfStudy" >
       </div>
       <div class="form-group">
-        <label for="start_date">Start Date : </label>
-        <input type="date" id="start_date" class="form-control" ngModel name="start_date" >
+        <label for="startDate">Start Date : </label>
+        <input type="date" id="startDate" class="form-control" ngModel name="startDate" >
       </div>
       <div class="form-group">
-        <label for="end_date">end Date : </label>
-        <input type="date" id="end_date" class="form-control" ngModel name="end_date" >
+        <label for="endDate">end Date : </label>
+        <input type="date" id="endDate" class="form-control" ngModel name="endDate" >
       </div>
       <div class="form-group">
         <label for="grade">Grade (GPA) : </label>
@@ -119,11 +121,14 @@
         <h4 class="panel-title">
           <h3>Experience</h3><button class="btn btn-primary" (click)="showExperience()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
         </h4></div>
-      <div class="panel-body"><h4>Title :</h4></div>
-      <div class="panel-body"><h4>Company Name :</h4></div>
-      <div class="panel-body"><h4>Location :</h4></div>
-      <div class="panel-body"><h4>Start Date :</h4></div>
-      <div class="panel-body"><h4>End Date :</h4></div>
+      <div *ngFor="let exp of experience">
+      <div class="panel-body"><h4>Title : {{exp.title}}</h4></div>
+      <div class="panel-body"><h4>Company Name : {{exp.companyName}}</h4></div>
+      <div class="panel-body"><h4>Location : {{exp.location}}</h4></div>
+      <div class="panel-body"><h4>Start Date :{{exp.startDate}}</h4></div>
+      <div class="panel-body"><h4>End Date :{{exp.endDate}}</h4></div><hr>
+      </div>
+
 
     </div>
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showexp" >
@@ -133,8 +138,8 @@
           <input type="text" id="title" class="form-control" ngModel name="title" >
         </div>
         <div class="form-group">
-          <label for="company_name">Company Name : </label>
-          <input type="text" id="company_name" class="form-control" ngModel name="company_name" >
+          <label for="companyName">Company Name : </label>
+          <input type="text" id="companyName" class="form-control" ngModel name="companyName" >
         </div>
         <div class="form-group">
           <label for="location">Location : </label>
@@ -142,11 +147,11 @@
         </div>
         <div class="form-group">
           <label for="c_start_date">Start Date : </label>
-          <input type="date" id="c_start_date" class="form-control" ngModel name="start_date" >
+          <input type="date" id="c_start_date" class="form-control" ngModel name="startDate" >
         </div>
         <div class="form-group">
           <label for="c_end_date">end Date : </label>
-          <input type="date" id="c_end_date" class="form-control" ngModel name="end_date" >
+          <input type="date" id="c_end_date" class="form-control" ngModel name="endDate" >
         </div>
         <button class="btn btn-primary" type="submit"  >Submit</button>
       </form>
@@ -170,7 +175,7 @@
       <form >
         <div class="form-group">
           <select  class=" form-control"  ngModel id="skill_name" name="skill_name" required>
-            <option *ngFor="let skill of skills" >{{skill}}</option>
+            <option  *ngFor="let skill of skills" [value]=" skill">{{skill}}   </option>
           </select>
         </div>
         <div class="form-group">

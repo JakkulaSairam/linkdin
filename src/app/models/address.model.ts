@@ -3,7 +3,7 @@ export interface Address{
   city:string;
   state:string;
   country:string;
-  postal_code:string;
+  postalcode:string;
   userId:number;
 
 }
