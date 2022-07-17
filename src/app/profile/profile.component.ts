@@ -6,6 +6,9 @@ import {User} from "../models/user.model";
 import {Address} from "../models/address.model";
 import {Education} from "../models/education.model";
 import {Experience} from "../models/experience.model";
+import {Skills} from "../models/Skills.model";
+import {NgForm} from "@angular/forms";
+import {SkillsData} from "../models/skillsdata.model";
 
 @Component({
   selector: 'app-profile',
@@ -31,9 +34,11 @@ export class ProfileComponent implements OnInit {
   experience:Experience[];
 
   //profile skills
-  skills=['C','C++','Java','Python','Web Development','DBMS','C#','MERN','MEAN']
+  skills1={1:'C',2:'C++',3:'Java',4:'Python',5:'DBMS',6:'Web Development'};
   showskill=false;
-  proficiency=[1,2,3,4,5,6,7,8,9,10]
+  proficiency1={1:'Beginner',2:'Intermediate',3:'Advanced',4:'Expert'};
+  skills:Skills[];
+
 
 
   constructor(private route:ActivatedRoute,private http:HttpClient) { }
@@ -68,8 +73,8 @@ export class ProfileComponent implements OnInit {
        }
          return eduarray;
       })).
-      subscribe(eduarray=>{
-        this.assignEducation(eduarray);
+      subscribe(eduArray=>{
+        this.assignEducation(eduArray);
 
       });
 
@@ -84,6 +89,20 @@ export class ProfileComponent implements OnInit {
       this.assignExperience(exparray);
 
     });
+
+    this.http.get('http://localhost:8080/user/skill/'+this.id).pipe(map((response:any)=>{
+      const skillarray:Skills[]=[];
+      console.log(response);
+      for(const key in response.data.Skill){
+        skillarray.push({...response.data.Skill[key]});
+      }
+      return skillarray;
+    })).subscribe(skillarray=>{
+      this.assignSkills(skillarray);
+      }
+  );
+
+
 
 
     }
@@ -108,6 +127,7 @@ showAddress(){
     alert("Address Added");
     this.showAddress();
     this.ngOnInit();
+    window.location.reload();
 }
 assignAddress(address:Address){
     this.address=address;
@@ -132,9 +152,10 @@ addEducationToServer(education:Education){
 
     this.showEducation();
   this.ngOnInit();
+  window.location.reload();
 }
-  assignEducation(eduarray:Education[]){
-    this.education=eduarray;
+  assignEducation(eduArray:Education[]){
+    this.education=eduArray;
 }
 
 
@@ -152,12 +173,30 @@ addExperienceToServer(experience:Experience){
 
     this.showExperience();
   this.ngOnInit();
+  window.location.reload();
 }
 showSkill(){
     this.showskill=!this.showskill;
 }
-assignExperience(exparray:Experience[]){
-  this.experience=exparray;
+assignExperience(expArray:Experience[]){
+  this.experience=expArray;
   }
+
+
+  addSkillsToServer(skillsFormData:Skills){
+
+    skillsFormData.userId=Number(this.id);
+    this.http.post('http://localhost:8080/user/skill/',skillsFormData).subscribe(response=>{
+
+    });
+    this.showSkill();
+    this.ngOnInit();
+    window.location.reload();
+  }
+  assignSkills(skills:Skills[]){
+    this.skills=skills;
+    console.log(skills);
+  }
+
 }
 
