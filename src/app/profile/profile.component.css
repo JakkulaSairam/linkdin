@@ -33,6 +33,9 @@
 .user-name a {
   color: inherit !important;
 }
+.profile{
+  align-content: center;
+}
 
 .glyphicon { margin-right:10px; }
 .panel-body { padding:0px; }
@@ -42,3 +45,10 @@
 .panel.panel-default {
   margin-top: 30px;
 }
+.panel-body{
+  margin-left: 50px;
+}
+.panel-skill{
+  background-color: #ffcccc;
+}
+

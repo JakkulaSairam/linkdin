@@ -10,7 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 const appRoutes:Routes=[
   {path:"",component:LoginComComponent},
   {path:'register',component:RegisterComponent},
-  {path:'profile/:email',component:ProfileComponent}
+  {path:'profile/:id',component:ProfileComponent}
 ]
 
 @NgModule({

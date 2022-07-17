@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user.model";
 import {UsersService} from "../users.service";
+import {Router, Routes} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -15,11 +16,12 @@ export class RegisterComponent implements OnInit {
   phoneNumHelpBlock=false;
   confirmPassword:string="";
   confirmPasswordHelpBlock=false;
-  constructor(private http:HttpClient,private registerService:UsersService) {
+  constructor(private http:HttpClient,private registerService:UsersService,private router:Router) {
 
   }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(users:User,f:NgForm){
@@ -38,10 +40,9 @@ export class RegisterComponent implements OnInit {
       this.phoneNumHelpBlock=false;
       this.confirmPasswordHelpBlock=false;
       this.registerService.registerUser(users);
+      this.router.navigate(['/']);
     f.reset();
     (<HTMLInputElement>document.getElementById("confirmPassword")).value="";
-
-
     }
 
   }

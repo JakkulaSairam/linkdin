@@ -1,52 +1,237 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
 <!------ Include the above in your HEAD tag ---------->
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/  css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container">
+<div class="container-fluid ">
   <div class="row">
+    <div class="col-md-4"></div>
     <div class="col-md-4 mar-cls">
-      <div class="pro-sec">
-        <a title="Your Name"  class="pro-ava-img">
-          <img alt="Your Name" src="http://xpertlab.com/wp-content/uploads/2014/04/20151012_561baed03a54e.png" class="pro-avatar-img">
+      <div class="pro-sec ">
+        <a title="Profile Photo"  class="pro-ava-img">
+          <img alt="Porfile Photo" src="http://xpertlab.com/wp-content/uploads/2014/04/20151012_561baed03a54e.png" class="img-fluid img-thumbnail">
         </a>
 
-        <div class="ov-div">
-          <div class="twPc-divName">
-            <h2>{{ username}}</h2>
+        <div class="row" style="display:flex; align-items:center; justify-content:center;" *ngIf="user">
+          <div class="twPc-divName text-uppercase" ><h2>{{user.first_name+" "+user.last_name}}</h2>
           </div>
         </div>
-      </div>
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" >
-                            Education</a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <table class="table">
-                <tr>
-                  <td>
-                    <h4>Articles</h4>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   </div>
+  <div class="panel panel-primary" *ngIf="user">
+    <div class="panel-heading"><h3>Profile Data</h3></div>
+    <div class="panel-body"><h4>Mobile Number : {{ user.phone }}</h4></div>
+    <div class="panel-body"><h4>Email : {{ user.email }}</h4></div>
+    <div class="panel-body"><h4>Gender : {{ user.gender }}</h4></div>
+  </div>
+
+<div class="row">
+  <div  class="panel panel-warning" >
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <h3>Address</h3><button class="btn btn-primary " (click)="showAddress()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
+                </h4>
+              </div>
+    <div class="panel-body"><h4>House Number:</h4></div>
+    <div class="panel-body"><h4>City :</h4></div>
+    <div class="panel-body"><h4>State :</h4></div>
+    <div class="panel-body"><h4>Country :</h4></div>
+    <div class="panel-body"><h4>Postal Code :</h4></div>
+
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showadd">
+  <form (ngSubmit)="addAddressToServer(addressForm.value)"  #addressForm="ngForm">
+    <div class="form-group">
+      <label for="house_number">House Number : </label>
+      <input type="text" id="house_number" class="form-control" ngModel name="house_number" >
+    </div>
+    <div class="form-group">
+      <label for="city">City : </label>
+      <input type="text" id="city" class="form-control" ngModel name="city" >
+    </div>
+    <div class="form-group">
+      <label for="state">State : </label>
+      <input type="text" id="state" class="form-control" ngModel name="state" >
+    </div>
+    <div class="form-group">
+      <label for="country">Country : </label>
+      <input type="text" id="country" class="form-control" ngModel name="country" >
+    </div>
+    <div class="form-group">
+      <label for="postalcode">Postal Code : </label>
+      <input type="text" id="postalcode" class="form-control" ngModel name="postalcode" >
+    </div>
+    <button class="btn btn-primary" type="submit" >Submit</button>
+  </form>
+  </div>
 </div>
+
+
+<div class="row">
+  <div  class="panel panel-success" >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <h3>Education</h3><button class="btn btn-primary " (click)="showEducation()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
+      </h4></div>
+    <div class="panel-body"><h4>School :</h4></div>
+    <div class="panel-body"><h4>Degree :</h4></div>
+    <div class="panel-body"><h4>Field Of Study :</h4></div>
+    <div class="panel-body"><h4>Start Date :</h4></div>
+    <div class="panel-body"><h4>End Date :</h4></div>
+    <div class="panel-body"><h4>Grade :</h4></div>
+
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showedu" >
+    <form (ngSubmit)="addEducationToServer(educationForm.value)" #educationForm="ngForm">
+      <div class="form-group">
+        <label for="school">School: </label>
+        <input type="text" id="school" class="form-control" ngModel name="school" >
+      </div>
+      <div class="form-group">
+        <label for="degree">Degree : </label>
+        <input type="text" id="degree" class="form-control" ngModel name="degree" >
+      </div>
+      <div class="form-group">
+        <label for="field_of_study">Field of Study : </label>
+        <input type="text" id="field_of_study" class="form-control" ngModel name="field_of_study" >
+      </div>
+      <div class="form-group">
+        <label for="start_date">Start Date : </label>
+        <input type="date" id="start_date" class="form-control" ngModel name="start_date" >
+      </div>
+      <div class="form-group">
+        <label for="end_date">end Date : </label>
+        <input type="date" id="end_date" class="form-control" ngModel name="end_date" >
+      </div>
+      <div class="form-group">
+        <label for="grade">Grade (GPA) : </label>
+        <input type="text" id="grade" class="form-control" ngModel name="grade" >
+      </div>
+      <button class="btn btn-primary" type="submit"  >Submit</button>
+    </form>
+  </div>
+</div>
+
+  <div class="row">
+    <div  class="panel panel-info" >
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <h3>Experience</h3><button class="btn btn-primary" (click)="showExperience()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
+        </h4></div>
+      <div class="panel-body"><h4>Title :</h4></div>
+      <div class="panel-body"><h4>Company Name :</h4></div>
+      <div class="panel-body"><h4>Location :</h4></div>
+      <div class="panel-body"><h4>Start Date :</h4></div>
+      <div class="panel-body"><h4>End Date :</h4></div>
+
+    </div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showexp" >
+      <form (ngSubmit)="addExperienceToServer(experienceForm.value)" #experienceForm="ngForm">
+        <div class="form-group">
+          <label for="title">Title: </label>
+          <input type="text" id="title" class="form-control" ngModel name="title" >
+        </div>
+        <div class="form-group">
+          <label for="company_name">Company Name : </label>
+          <input type="text" id="company_name" class="form-control" ngModel name="company_name" >
+        </div>
+        <div class="form-group">
+          <label for="location">Location : </label>
+          <input type="text" id="location" class="form-control" ngModel name="location" >
+        </div>
+        <div class="form-group">
+          <label for="c_start_date">Start Date : </label>
+          <input type="date" id="c_start_date" class="form-control" ngModel name="start_date" >
+        </div>
+        <div class="form-group">
+          <label for="c_end_date">end Date : </label>
+          <input type="date" id="c_end_date" class="form-control" ngModel name="end_date" >
+        </div>
+        <button class="btn btn-primary" type="submit"  >Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+
+    <div  class="panel panel-info" >
+      <div class="panel-heading panel-skill">
+        <h4 class="panel-title ">
+          <h3>Skills</h3><button class="btn btn-primary" (click)="showSkill()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
+        </h4></div>
+      <div class="panel-body row" ><h4 class="col-sm-6">Skill Name: </h4><h4 class="col-sm-6">Proficiency: </h4> </div>
+
+
+    </div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showskill" >
+      <form >
+        <div class="form-group">
+          <select  class=" form-control"  ngModel id="skill_name" name="skill_name" required>
+            <option *ngFor="let skill of skills" >{{skill}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select  class=" form-control"  ngModel id="proficiency" name="skill_name" required>
+            <option *ngFor="let prof of proficiency" >{{prof}}</option>
+          </select>
+        </div>
+
+
+        <button class="btn btn-primary" type="submit"  >Submit</button>
+      </form>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+<!--      <div class="panel-group" id="accordion">-->
+<!--        <div class="panel panel-default">-->
+<!--          <div class="panel-heading">-->
+<!--            <h4 class="panel-title">-->
+<!--              <a data-toggle="collapse" data-parent="#accordion" >Education</a><button class="btn btn-primary " style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>-->
+<!--            </h4>-->
+<!--          </div>-->
+<!--          <div id="collapseOne" class="panel-collapse collapse in">-->
+<!--            <div class="panel-body">-->
+<!--              <table class="table">-->
+<!--                <tr>-->
+<!--                  <td>-->
+<!--                    <h4>Articles</h4>-->
+<!--                  </td>-->
+<!--                </tr>-->
+<!--              </table>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--<div class="panel-group" id="accordion2">-->
+<!--  <div class="panel panel-default">-->
+<!--    <div class="panel-heading">-->
+<!--      <h4 class="panel-title">-->
+<!--        <a data-toggle="collapse" data-parent="#accordion" >Education</a><button class="btn btn-primary " style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>-->
+<!--      </h4>-->
+<!--    </div>-->
+<!--    <div id="collapseOne2" class="panel-collapse collapse in">-->
+<!--      <div class="panel-body">-->
+<!--        <table class="table">-->
+<!--          <tr>-->
+<!--            <td>-->
+<!--              <h4>Articles</h4>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
 
 
     <!-- code end -->

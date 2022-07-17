@@ -12,28 +12,28 @@ import {Router} from "@angular/router";
 })
 export class LoginComComponent implements OnInit {
   constructor(private loginService:UsersService , private router:Router) { }
-  // loggedIn=false;
+  loggedIn=false;
   invalidCred=false;
   ngOnInit(): void {
   }
    onSubmit(user: LoginUser) {
      this.loginService.checkLoginUser(user.email, user.password).subscribe((response: any) => {
-       if(response.body.data.email.toString()=='not'){
-         this.setLogStatus(true,response.body.data.email.toString());
+       if(response.body.data.id.toString()==="-1"){
+         this.setLogStatus(true,response.body.data.id);
 
        }else{
-         this.setLogStatus(false,response.body.data.email.toString());
+         this.setLogStatus(false,response.body.data.id);
 
        }
 
      });
    }
-   setLogStatus(flag:boolean,text:string){
+   setLogStatus(flag:boolean,id:number){
     // this.loggedIn=!flag;
      if(flag==false){
+       this.loggedIn=true;
+     this.router.navigate(['/profile',id])
 
-       console.log(text)
-     this.router.navigate(['/profile',text])
      }
     this.invalidCred=flag;
    }
