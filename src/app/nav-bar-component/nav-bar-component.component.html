@@ -1,0 +1,22 @@
+<nav class="navbar navbar-light navbar-expand-md navbar-fixed-top" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        Profile App
+      </a>
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile" >Profile</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav navbar-right">
+      <li><a class="nav-link" *ngIf="!loggedStatus" routerLink="/">Login</a></li>
+      <li ><a class="nav-link" *ngIf="loggedStatus" (click)="changeStatusToLogout()" routerLink="/">Logout</a></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register" >Register</a>
+      </li>
+    </ul>
+  </div>
+</nav>

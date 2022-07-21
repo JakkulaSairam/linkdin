@@ -1,0 +1,27 @@
+<div  class="panel panel-info" >
+  <div class="panel-heading">
+    <h4 class="panel-title row">
+      <h3 class="col-11">Experience</h3><div class="col-1"><button class="btn btn-primary" (click)="addExperinceToServer('add')" style="  display: block;  margin-left: auto;  margin-right: 10px;">+</button></div>
+    </h4></div>
+  <div class="panel-body" *ngFor="let exp of experience" style="margin-bottom: 20px;">
+    <div class="card  shadow p-3 mb-5 bg-body rounded">
+      <div class="card-block card-body text-secondary" style="margin-left:20px;margin-bottom: 20px; margin-top: 20px">
+        <h4 class="card-title text-uppercase">{{exp.title}}</h4>
+        <div class="container">
+          <div class="row">
+            <div class="col"><h5 >Company Name : <p class="card-text lead">{{exp.companyName}}</p></h5></div>
+            <div class="col"><h5 >Location :<p class="card-text lead">{{exp.location}}</p></h5></div>
+          </div>
+          <div class="row">
+            <div class="col"><h5 >Start Date :<p class="card-text lead">{{exp.startDate | date}}</p></h5></div>
+            <div class="col"><h5> End Date :<p class="card-text lead">{{exp.endDate | date}}</p></h5></div>
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="  display: block;  margin-left: auto; margin-top: auto;  margin-right: 10px;">
+          <button  class=" btn btn-outline-secondary  me-md-2" (click)="editExperience(exp.id)">Edit</button>
+          <button  class=" btn btn-outline-danger  " (click)="deleteExperienceById(exp.id)" >Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

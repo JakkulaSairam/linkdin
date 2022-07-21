@@ -1,0 +1,43 @@
+
+<app-nav-bar-component></app-nav-bar-component>
+
+
+<div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="col col-md-9 col-lg-7 col-xl-7">
+    <div class="card m-5 shadow p-3 mb-5 bg-body text-secondary" style="border-radius: 15px;">
+      <h4 class="card-title text-uppercase">{{ operationToPerfrom }} Address</h4>
+      <div class="card-body  p-4">
+  <form [formGroup]="signUpForm" (ngSubmit)="addAddressToServer()">
+    <div class="form-group" >
+      <label for="house_number">House Number : </label>
+      <input type="text" id="house_number" class="form-control"  formControlName="house_number" >
+    </div>
+    <div class="form-group">
+      <label for="city">City : </label>
+      <input type="text" id="city" class="form-control" formControlName="city" >
+    </div>
+    <div class="form-group">
+      <label for="state">State : </label>
+      <input type="text" id="state" class="form-control"  formControlName="state" >
+    </div>
+    <div class="form-group">
+      <label for="country">Country : </label>
+      <input type="text" id="country" class="form-control" formControlName="country" >
+    </div>
+    <div class="form-group">
+      <label for="postalcode">Postal Code : </label>
+      <input type="text" id="postalcode" class="form-control" formControlName="postalcode" >
+    </div>
+    <div class="form-group">
+      <label for="addressTypeId">Address Type: </label>
+      <select id="addressTypeId" class="form-control"  formControlName="addressTypeId" >
+        <option *ngFor="let address of addresss" [value]=" address.id ">{{address.type}}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary"  type="submit" >Submit</button>
+  </form>
+      </div>
+    </div>
+  </div>
+</div>

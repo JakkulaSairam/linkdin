@@ -1,0 +1,29 @@
+<div  class="panel panel-success" >
+  <div class="panel-heading">
+    <h4 class="panel-title row">
+      <h3 class="col-11">Education</h3><div class="col-1"><button class="btn btn-primary" (click)="addEducationToServer('add')" style="  display: block;  margin-left: auto;  margin-right: 10px;">+</button></div>
+    </h4></div>
+  <div class="panel-body" *ngFor="let edu of education" style="margin-bottom: 20px;">
+    <div class="card shadow p-3 mb-5 bg-body rounded">
+      <div class="card-block card-body text-secondary" style="margin-left:20px;margin-bottom: 20px; margin-top: 20px">
+        <h4 class="card-title text-uppercase">{{ edu.degree}}</h4>
+        <div class="container">
+          <div class="row">
+            <div class="col"><h5 >School :<p class="card-text lead">{{edu.school}}</p></h5></div>
+            <div class="col"><h5 >Start Date :<p class="card-text lead">{{edu.startDate | date}}</p></h5></div>
+            <div class="col"><h5 >End Date :<p class="card-text lead">{{edu.endDate | date}}</p></h5></div>
+          </div>
+          <div class="row">
+            <div class="col-8"><h5 >Field Of Study :<p class="card-text lead">{{edu.fieldOfStudy}}</p></h5></div>
+            <div class="col-4"><h5 >Grade :<p class="card-text lead">{{edu.grade}}</p></h5></div>
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="  display: block;  margin-left: auto; margin-top: auto;  margin-right: 10px;">
+          <button  class=" btn btn-outline-secondary  me-md-2" (click)="editEducation(edu.id)">Edit</button>
+          <button  class=" btn btn-outline-danger  " (click)="deleteEducationById(edu.id)" >Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../models/user.model";
-import {UsersService} from "../users.service";
+import {UsersService} from "../Services/users.service";
 import {NgModel} from "@angular/forms";
 import {LoginUser} from "../models/loginuser.model";
 import {Router} from "@angular/router";
@@ -32,7 +32,8 @@ export class LoginComComponent implements OnInit {
     // this.loggedIn=!flag;
      if(flag==false){
        this.loggedIn=true;
-     this.router.navigate(['/profile',id])
+       localStorage.setItem('userId', id.toString());
+     this.router.navigate(['/profile',id]);
 
      }
     this.invalidCred=flag;

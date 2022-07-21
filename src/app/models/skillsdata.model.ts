@@ -1,4 +1,4 @@
 export interface SkillsData{
-  skillName:string;
-  proficiency:string;
+  name:string;
+  id:number;
 }

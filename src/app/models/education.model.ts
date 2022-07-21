@@ -6,4 +6,5 @@ export interface Education{
   endDate:string;
   grade:string;
   userId:number;
+  id:number;
 }

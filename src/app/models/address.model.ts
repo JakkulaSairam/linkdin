@@ -5,5 +5,7 @@ export interface Address{
   country:string;
   postalcode:string;
   userId:number;
+  addressTypeId:number;
+  id:number;
 
 }

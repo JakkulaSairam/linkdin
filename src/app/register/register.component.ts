@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user.model";
-import {UsersService} from "../users.service";
+import {UsersService} from "../Services/users.service";
 import {Router, Routes} from "@angular/router";
 
 @Component({
@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit {
       this.phoneNumHelpBlock=false;
       this.confirmPasswordHelpBlock=false;
       this.registerService.registerUser(users);
+      alert("Successfully Registered");
       this.router.navigate(['/']);
     f.reset();
     (<HTMLInputElement>document.getElementById("confirmPassword")).value="";

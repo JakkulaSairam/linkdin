@@ -1,0 +1,22 @@
+<div  class="panel panel-warning" >
+    <div class="panel-heading">
+      <h4 class="panel-title row">
+        <h3 class="col-11">Address</h3><div class="col-1"><button class="btn btn-primary" (click)="addAddress('add')" style="  display: block;  margin-left: auto;  margin-right: 10px;">+</button></div>
+      </h4></div>
+    <div class="panel-body" *ngFor="let addr of address" style="margin-bottom: 20px;">
+    <div  *ngIf="address">
+        <div class="card shadow p-3 mb-5 bg-body rounded">
+          <div class="card-block card-body text-secondary" style="margin-left:20px;margin-bottom: 20px; margin-top: 20px">
+            <h4 class="card-title text-uppercase">{{getAddressTypeNameFromId(addr.addressTypeId)}}</h4>
+            <h4 class="card-text lead">{{ addr.house_number}} ,{{addr.city}} ,{{ addr.state}},{{addr.country}},{{addr.postalcode}}</h4>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="  display: block;  margin-left: auto; margin-top: auto;  margin-right: 10px;">
+              <button  class=" btn btn-outline-secondary  me-md-2" (click)="editAddress(addr.id)">Edit</button>
+              <button  class=" btn btn-outline-danger  " (click)="DeleteUserByAddressId(addr.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    </div>
+  </div>
+

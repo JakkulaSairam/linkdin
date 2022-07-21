@@ -6,4 +6,6 @@ export interface Experience{
   endDate:string;
   employmentTypeId:number;
   userId:number;
+  id:number;
+
 }

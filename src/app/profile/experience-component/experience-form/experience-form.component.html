@@ -1,0 +1,36 @@
+<app-nav-bar-component></app-nav-bar-component>
+<div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="col col-md-9 col-lg-7 col-xl-7">
+    <div class="card m-5 shadow p-3 mb-5 bg-body text-secondary" style="border-radius: 15px;">
+      <h4 class="card-title text-uppercase">{{ operationToPerform }} Experience</h4>
+      <div class="card-body  p-4">
+        <form [formGroup]="experienceForm" (ngSubmit)="addExperienceToServer()">
+          <div class="form-group">
+            <label for="title">Title: </label>
+            <input type="text" id="title" class="form-control" formControlName="title">
+          </div>
+          <div class="form-group">
+            <label for="companyName">Company Name : </label>
+            <input type="text" id="companyName" class="form-control" formControlName="companyName" >
+          </div>
+          <div class="form-group">
+            <label for="location">Location : </label>
+            <input type="text" id="location" class="form-control" formControlName="location" >
+          </div>
+          <div class="form-group">
+            <label for="c_start_date">Start Date : </label>
+            <input type="date" id="c_start_date" class="form-control" formControlName="startDate" >
+          </div>
+          <div class="form-group">
+            <label for="c_end_date">end Date : </label>
+            <input type="date" id="c_end_date" class="form-control" formControlName="endDate" >
+          </div>
+          <button class="btn btn-primary" type="submit"  >Submit</button>
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

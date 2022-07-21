@@ -1,0 +1,39 @@
+
+<app-nav-bar-component></app-nav-bar-component>
+
+<div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="col col-md-9 col-lg-7 col-xl-7">
+    <div class="card m-5 shadow p-3 mb-5 bg-body text-secondary" style="border-radius: 15px;">
+      <h4 class="card-title text-uppercase">{{ operationToPerform }} Education</h4>
+      <div class="card-body  p-4">
+          <form [formGroup]="educationForm" (ngSubmit)="addEducationToServer()">
+            <div class="form-group">
+              <label for="school">School: </label>
+              <input type="text" id="school" class="form-control"  formControlName="school" >
+            </div>
+            <div class="form-group">
+              <label for="degree">Degree : </label>
+              <input type="text" id="degree" class="form-control" formControlName="degree" >
+            </div>
+            <div class="form-group">
+              <label for="fieldOfStudy">Field of Study : </label>
+              <input type="text" id="fieldOfStudy" class="form-control" formControlName="fieldOfStudy" >
+            </div>
+            <div class="form-group">
+              <label for="startDate">Start Date : </label>
+              <input type="date" id="startDate" class="form-control" formControlName="startDate" >
+            </div>
+            <div class="form-group">
+              <label for="endDate">end Date : </label>
+              <input type="date" id="endDate" class="form-control" formControlName="endDate" >
+            </div>
+            <div class="form-group">
+              <label for="grade">Grade (GPA) : </label>
+              <input type="text" id="grade" class="form-control" formControlName="grade" >
+            </div>
+            <button class="btn btn-primary" type="submit"  >Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

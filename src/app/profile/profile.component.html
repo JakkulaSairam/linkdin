@@ -1,253 +1,56 @@
 
-
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container-fluid ">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 mar-cls">
-      <div class="pro-sec ">
-        <a title="Profile Photo"  class="pro-ava-img">
-          <img alt="Porfile Photo" src="http://xpertlab.com/wp-content/uploads/2014/04/20151012_561baed03a54e.png" class="img-fluid img-thumbnail">
-        </a>
-
-        <div class="row" style="display:flex; align-items:center; justify-content:center;" *ngIf="user">
-          <div class="twPc-divName text-uppercase" ><h2>{{user.first_name+" "+user.last_name}}</h2>
+<app-nav-bar-component></app-nav-bar-component>
+<div class="container">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-md-9 col-lg-7 col-xl-5">
+        <div class="card shadow" style="border-radius: 15px;">
+          <div class="card-body p-4">
+            <div class="d-flex text-black">
+              <div class="flex-shrink-0">
+                <img src="https://www.dgvaishnavcollege.edu.in/dgvaishnav-c/uploads/2021/01/dummy-profile-pic.jpg"
+                     alt="Generic placeholder image" class="img-fluid"
+                     style="width: 180px; border-radius: 10px;">
+              </div>
+              <div class="flex-grow-1 ms-3" *ngIf="user">
+                <h5 class="mb-1 text-capitalize">{{user.first_name+" "+user.last_name}}</h5>
+                <p class="mb-2 pb-1 text-uppercase" style="color: #2b2a2a;"> {{ user.email }}</p>
+                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                     style="background-color: #efefef;">
+                  <div>
+                    <p class="small text-muted mb-1">Mobile Number :</p>
+                    <p class="mb-0">{{ user.phone }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4"></div>
       </div>
     </div>
-  </div>
-  <div class="panel panel-primary" *ngIf="user">
-    <div class="panel-heading"><h3>Profile Data</h3></div>
-    <div class="panel-body"><h4>Mobile Number : {{ user.phone }}</h4></div>
-    <div class="panel-body"><h4>Email : {{ user.email }}</h4></div>
-    <div class="panel-body"><h4>Gender : {{ user.gender }}</h4></div>
   </div>
 
-<div class="row">
-  <div  class="panel panel-warning" >
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <h3>Address</h3><button class="btn btn-primary " (click)="showAddress()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
-                </h4>
-              </div>
-    <div class="row" *ngIf="address">
-    <div class="panel-body"><h4>House Number: {{ address.house_number}} </h4></div>
-    <div class="panel-body"><h4>City :{{address.city}}</h4></div>
-    <div class="panel-body"><h4>State :{{ address.state}}</h4></div>
-    <div class="panel-body"><h4>Country : {{address.country}}</h4></div>
-      <div class="panel-body"><h4>Postal Code :{{address.postalcode}}</h4></div></div>
-
-  </div>
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showadd">
-  <form (ngSubmit)="addAddressToServer(addressForm.value)"  #addressForm="ngForm">
-    <div class="form-group">
-      <label for="house_number">House Number : </label>
-      <input type="text" id="house_number" class="form-control" ngModel name="house_number" >
-    </div>
-    <div class="form-group">
-      <label for="city">City : </label>
-      <input type="text" id="city" class="form-control" ngModel name="city" >
-    </div>
-    <div class="form-group">
-      <label for="state">State : </label>
-      <input type="text" id="state" class="form-control" ngModel name="state" >
-    </div>
-    <div class="form-group">
-      <label for="country">Country : </label>
-      <input type="text" id="country" class="form-control" ngModel name="country" >
-    </div>
-    <div class="form-group">
-      <label for="postalcode">Postal Code : </label>
-      <input type="text" id="postalcode" class="form-control" ngModel name="postalcode" >
-    </div>
-    <button class="btn btn-primary" type="submit" >Submit</button>
-  </form>
-  </div>
-</div>
 
 
-<div class="row">
-  <div  class="panel panel-success" >
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <h3>Education</h3><button class="btn btn-primary " (click)="showEducation()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
-      </h4></div>
-    <div *ngFor="let edu of education">
-    <div class="panel-body"><h4>School :{{edu.school}}</h4></div>
-    <div class="panel-body"><h4>Degree :{{edu.degree}}</h4></div>
-    <div class="panel-body"><h4>Field Of Study :{{edu.fieldOfStudy}}</h4></div>
-    <div class="panel-body"><h4>Start Date :{{edu.startDate}}</h4></div>
-    <div class="panel-body"><h4>End Date :{{edu.endDate}}</h4></div>
-    <div class="panel-body"><h4>Grade :{{edu.grade}}</h4></div><hr></div>
-
+<div class="container-fluid ">
+  <hr>
+  <div class="row">
+    <app-address-componenet [id]="id "></app-address-componenet>
   </div>
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showedu" >
-    <form (ngSubmit)="addEducationToServer(educationForm.value)" #educationForm="ngForm">
-      <div class="form-group">
-        <label for="school">School: </label>
-        <input type="text" id="school" class="form-control" ngModel name="school" >
-      </div>
-      <div class="form-group">
-        <label for="degree">Degree : </label>
-        <input type="text" id="degree" class="form-control" ngModel name="degree" >
-      </div>
-      <div class="form-group">
-        <label for="fieldOfStudy">Field of Study : </label>
-        <input type="text" id="fieldOfStudy" class="form-control" ngModel name="fieldOfStudy" >
-      </div>
-      <div class="form-group">
-        <label for="startDate">Start Date : </label>
-        <input type="date" id="startDate" class="form-control" ngModel name="startDate" >
-      </div>
-      <div class="form-group">
-        <label for="endDate">end Date : </label>
-        <input type="date" id="endDate" class="form-control" ngModel name="endDate" >
-      </div>
-      <div class="form-group">
-        <label for="grade">Grade (GPA) : </label>
-        <input type="text" id="grade" class="form-control" ngModel name="grade" >
-      </div>
-      <button class="btn btn-primary" type="submit"  >Submit</button>
-    </form>
-  </div>
-</div>
 
   <div class="row">
-    <div  class="panel panel-info" >
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <h3>Experience</h3><button class="btn btn-primary" (click)="showExperience()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
-        </h4></div>
-      <div *ngFor="let exp of experience">
-      <div class="panel-body"><h4>Title : {{exp.title}}</h4></div>
-      <div class="panel-body"><h4>Company Name : {{exp.companyName}}</h4></div>
-      <div class="panel-body"><h4>Location : {{exp.location}}</h4></div>
-      <div class="panel-body"><h4>Start Date :{{exp.startDate}}</h4></div>
-      <div class="panel-body"><h4>End Date :{{exp.endDate}}</h4></div><hr>
-      </div>
-
-
-    </div>
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showexp" >
-      <form (ngSubmit)="addExperienceToServer(experienceForm.value)" #experienceForm="ngForm">
-        <div class="form-group">
-          <label for="title">Title: </label>
-          <input type="text" id="title" class="form-control" ngModel name="title" >
-        </div>
-        <div class="form-group">
-          <label for="companyName">Company Name : </label>
-          <input type="text" id="companyName" class="form-control" ngModel name="companyName" >
-        </div>
-        <div class="form-group">
-          <label for="location">Location : </label>
-          <input type="text" id="location" class="form-control" ngModel name="location" >
-        </div>
-        <div class="form-group">
-          <label for="c_start_date">Start Date : </label>
-          <input type="date" id="c_start_date" class="form-control" ngModel name="startDate" >
-        </div>
-        <div class="form-group">
-          <label for="c_end_date">end Date : </label>
-          <input type="date" id="c_end_date" class="form-control" ngModel name="endDate" >
-        </div>
-        <button class="btn btn-primary" type="submit"  >Submit</button>
-      </form>
-    </div>
+    <app-education-component [id]="id"></app-education-component>
   </div>
-
-
 
   <div class="row">
-
-    <div  class="panel panel-info" >
-      <div class="panel-heading panel-skill">
-        <h4 class="panel-title ">
-          <h3>Skills</h3><button class="btn btn-primary" (click)="showSkill()" style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>
-        </h4></div>
-      <div *ngFor="let skill of skills">
-      <div class="panel-body row" ><h4 class="col-sm-6">Skill Name: {{ skills1[skill.skillNameId]}}</h4><h4 class="col-sm-6">Proficiency: {{proficiency1[skill.proficiencyId]}}</h4> </div>
-      </div>
-
-    </div>
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="showskill" >
-      <form (ngSubmit)="addSkillsToServer(skillsForm.value)"  #skillsForm="ngForm">
-        <div class="form-group">
-          <label for="house_number">Skill Name : </label>
-          <select  class=" form-control"  ngModel id="skill_name" name="skillNameId"  required>
-<!--            <option  *ngFor="let skill of skills" >{{skill}}   </option>-->
-            <option value=1>C</option>
-            <option value=2>C++</option>
-            <option value=3>Java</option>
-            <option value=4>Python</option>
-            <option value=5>DBMS</option>
-            <option value=6>Web Development</option>
-
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="house_number">Proficiency : </label>
-          <select  class=" form-control"  ngModel id="proficiency" name="proficiencyId" required>
-           <option value=1>Beginner</option>
-            <option value=2>Intermediate</option>
-           <option value=3>Advanced</option>
-            <option value=4>Expert</option>
-          </select>
-        </div>
-        <button class="btn btn-primary" type="submit"  >Submit</button>
-      </form>
-    </div>
-
-
+    <app-experience-component [id]="id"></app-experience-component>
   </div>
+  <div class="row">
+    <app-skills-component [id]="id"></app-skills-component>
+  </div>
+</div>
 </div>
 
 
 
-<!--      <div class="panel-group" id="accordion">-->
-<!--        <div class="panel panel-default">-->
-<!--          <div class="panel-heading">-->
-<!--            <h4 class="panel-title">-->
-<!--              <a data-toggle="collapse" data-parent="#accordion" >Education</a><button class="btn btn-primary " style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>-->
-<!--            </h4>-->
-<!--          </div>-->
-<!--          <div id="collapseOne" class="panel-collapse collapse in">-->
-<!--            <div class="panel-body">-->
-<!--              <table class="table">-->
-<!--                <tr>-->
-<!--                  <td>-->
-<!--                    <h4>Articles</h4>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--              </table>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--<div class="panel-group" id="accordion2">-->
-<!--  <div class="panel panel-default">-->
-<!--    <div class="panel-heading">-->
-<!--      <h4 class="panel-title">-->
-<!--        <a data-toggle="collapse" data-parent="#accordion" >Education</a><button class="btn btn-primary " style="  display: block;  margin-left: auto;  margin-right: 0;">+</button>-->
-<!--      </h4>-->
-<!--    </div>-->
-<!--    <div id="collapseOne2" class="panel-collapse collapse in">-->
-<!--      <div class="panel-body">-->
-<!--        <table class="table">-->
-<!--          <tr>-->
-<!--            <td>-->
-<!--              <h4>Articles</h4>-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--        </table>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--</div>-->
 
-
-
-    <!-- code end -->
